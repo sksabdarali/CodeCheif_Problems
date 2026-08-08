@@ -1,0 +1,48 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    long W=sc.nextInt();
+		    long rod=sc.nextInt();
+		    int[] arr=new int[n];
+		    for(int i=0;i<n;i++){
+		        arr[i]=sc.nextInt();
+		    }
+		    if(W<=rod){
+		        System.out.println("YES");
+		    }
+		    else{
+		        long req=W-rod;
+		        int max=0;
+		        for(int i=0;i<n;i++){
+		            max=Math.max(arr[i],max);
+		        }
+		        int[] freq=new int[max+1];
+		        for(int i=0;i<n;i++){
+		            freq[arr[i]]++;
+		        }
+		        long totalweight=0;
+		        for(int i=0;i<freq.length;i++){
+		            int pairs = freq[i] / 2;
+		            totalweight+=(long)pairs*2*i;
+		        }
+		        if(totalweight>=req){
+		            System.out.println("YES");
+		        }
+		        else{
+		            System.out.println("NO");
+		        }
+		    }
+		}
+
+	}
+}
