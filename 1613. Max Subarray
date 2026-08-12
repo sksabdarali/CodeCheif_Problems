@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    long[] a=new long[n];
+		    for(int i=0;i<n;i++){
+		        a[i]=sc.nextLong();
+		    }
+		    int m=sc.nextInt();
+		    long sumb=0;
+		    for(int i=0;i<m;i++){
+		        long x=sc.nextLong();
+		        if(x>0){
+		            sumb+=x;
+		        }
+		    }
+		    long sum=a[0];
+		    long max=a[0];
+		    for(int i=1;i<n;i++){
+		        sum=Math.max(sum+a[i],a[i]);
+		        max=Math.max(max,sum);
+		    }
+		    long prefix=0;
+		    long maxprefix=Integer.MIN_VALUE;
+		    for(int i=0;i<n;i++){
+		        prefix+=a[i];
+		        maxprefix=Math.max(prefix,maxprefix);
+		    }
+		    long suff=0;
+		    long maxsuff=Integer.MIN_VALUE;
+		    for(int i=n-1;i>=0;i--){
+		        suff+=a[i];
+		        maxsuff=Math.max(maxsuff,suff);
+		    }
+		    long ans=max;
+		    ans=Math.max(ans,sumb+maxprefix);
+		    ans=Math.max(ans,sumb+maxsuff);
+		    System.out.println(ans);
+		}
+
+	}
+}
